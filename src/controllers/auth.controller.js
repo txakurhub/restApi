@@ -2,12 +2,16 @@ import User from "../models/User";
 import jwt from "jsonwebtoken";
 import config from "../config";
 import Role from "../models/Role";
+import { ObjectId } from "mongodb";
 
 export const signUp = async (req, res) => {
   try {
     const { username, email, password, roles } = req.body;
-
+    const userId = ObjectId()
+    const userIdString = userId.toHexString()
+    console.log(userIdString);
     const newUser = new User({
+      _id: userIdString,
       username,
       email,
       password: await User.encryptPassword(password),
