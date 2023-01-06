@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const productSchema = new Schema( 
+const programSchema = new Schema( 
   {
     name: String,
     date: String,
@@ -13,4 +13,4 @@ const productSchema = new Schema(
   }
 );
 
-export default model('Program', productSchema)
+export default model('Program', programSchema)
