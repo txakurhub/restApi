@@ -3,8 +3,8 @@ import { Schema, model } from "mongoose";
 const productSchema = new Schema( 
   {
     name: String,
-    category: String,
-    price: Number,
+    date: String,
+    description: String,
     imgUrl: String,
   },
   {
@@ -13,4 +13,4 @@ const productSchema = new Schema(
   }
 );
 
-export default model('Product', productSchema)
+export default model('Program', productSchema)
