@@ -1,38 +1,38 @@
-import Product from "../models/Product";
+import Program from "../models/Program";
 
-export const getProducts = async (req, res) => {
-  const products = await Product.find();
-  res.json(products);
+export const getPrograms = async (req, res) => {
+  const Programs = await Program.find();
+  res.json(Programs);
 };
-export const getProductById = async (req, res) => {
-  const product = await Product.findById(req.params.productId);
-  res.json(product);
+export const getProgramById = async (req, res) => {
+  const Program = await Program.findById(req.params.programId);
+  res.json(Program);
 };
 
-export const createProduct = async (req, res) => {
+export const createProgram = async (req, res) => {
   const { name, category, price, imgUrl } = req.body;
 
-  const newProduct = new Product({
+  const newProgram = new Program({
     name,
     category,
     price,
     imgUrl,
   });
 
-  const productSaved = await newProduct.save();
-  res.status(201).json(newProduct);
+  const ProgramSaved = await newProgram.save();
+  res.status(201).json(newProgram);
 };
 
-export const updateProductById = async (req, res) => {
-  const updatedProduct = await Product.findByIdAndUpdate(
-    req.params.productId,
+export const updateProgramById = async (req, res) => {
+  const updatedProgram = await Program.findByIdAndUpdate(
+    req.params.programId,
     req.body,
     { new: true }
   );
-  res.status(200).json(updatedProduct)
+  res.status(200).json(updatedProgram);
 };
 
-export const deleteProductById = async(req, res) => {
-    await Product.findByIdAndDelete(req.params.productId)
-    res.status(200).json("Product deleted.")
+export const deleteProgramById = async (req, res) => {
+  await Program.findByIdAndDelete(req.params.programId);
+  res.status(200).json("Program deleted.");
 };

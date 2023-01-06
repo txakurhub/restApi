@@ -1,25 +1,25 @@
 import { Router } from "express";
-import * as productController from "../controllers/products.controller";
+import * as programController from "../controllers/programs.controller";
 import { authJwt } from "../middlewares";
 
 const router = Router();
 
-router.get("/", productController.getProducts);
-router.get("/:productId", productController.getProductById);
+router.get("/", programController.getPrograms);
+router.get("/:programId", programController.getProgramById);
 router.post(
   "/",
   [authJwt.verifyToken, authJwt.isModerador],
-  productController.createProduct
+  programController.createProgram
 );
 router.put(
-  "/:productId",
+  "/:programId",
   authJwt.verifyToken,
-  productController.updateProductById
+  programController.updateProgramById
 );
 router.delete(
-  "/:productId",
+  "/:programId",
   [authJwt.verifyToken, authJwt.isModerador],
-  productController.deleteProductById
+  programController.deleteProgramById
 );
 
 export default router;
