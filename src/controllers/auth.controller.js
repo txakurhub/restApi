@@ -7,9 +7,8 @@ import { ObjectId } from "mongodb";
 export const signUp = async (req, res) => {
   try {
     const { username, email, password, roles } = req.body;
-    const userId = ObjectId()
-    const userIdString = userId.toHexString()
-    console.log(userIdString);
+    const userId = ObjectId();
+    const userIdString = userId.toHexString();
     const newUser = new User({
       _id: userIdString,
       username,
@@ -41,7 +40,9 @@ export const signIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
     "roles"
   );
-  if (!userFound) res.status(400).json({ message: "User not Found" });
+
+  if (!userFound)
+    return res.status(400).json({ message: "User not Found" });
 
   const matchPassword = await User.comparePassword(
     req.body.password,
@@ -55,5 +56,5 @@ export const signIn = async (req, res) => {
     expiresIn: 86400,
   });
 
-  res.json({token});
+  res.json({ token });
 };

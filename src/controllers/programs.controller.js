@@ -10,12 +10,12 @@ export const getProgramById = async (req, res) => {
 };
 
 export const createProgram = async (req, res) => {
-  const { name, category, price, imgUrl } = req.body;
+  const { name, date, description, imgUrl } = req.body;
 
   const newProgram = new Program({
     name,
-    category,
-    price,
+    date,
+    description,
     imgUrl,
   });
 

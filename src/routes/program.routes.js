@@ -19,7 +19,7 @@ router.put(
 router.delete(
   "/:programId",
   [authJwt.verifyToken, authJwt.isModerador],
-  programController.deleteProgramById
+  programController.deleteProgramById 
 );
 
 export default router;

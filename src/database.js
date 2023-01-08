@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 mongoose.set("strictQuery", true);
 mongoose
-  .connect("mongodb://localhost/companydb", {
+  .connect("mongodb://localhost/andinadb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,    
   })
