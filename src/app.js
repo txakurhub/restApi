@@ -6,6 +6,8 @@ import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes"
 import { createRoles } from "./libs/initialSetup";
 
+let cors = require("cors");
+
 const app = express();
 createRoles();
 
@@ -13,6 +15,7 @@ app.set("pkg", pkg);
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({
